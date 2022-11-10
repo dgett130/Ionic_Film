@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {DataServiceService} from "./services/data-service.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private dataService: DataServiceService) {
+    this.dataService.getNotes().subscribe(res => {
+      console.log(res);
+    });
+  }
 }
